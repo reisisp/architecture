@@ -1,12 +1,14 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace Service\Product;
 
 use Model;
 use Model\Entity\Product;
 use Model\Repository\ProductRepository;
+use Service\Product\Sort\PriceSort;
+use Service\Product\Sort\SortCollection;
 
 class ProductService
 {
@@ -33,8 +35,20 @@ class ProductService
         // Применить паттерн Стратегия
         // $sortType === 'price'; // Сортировка по цене
         // $sortType === 'name'; // Сортировка по имени
+        $sortedProducts = $this->sortingProducts('Price', $productList);
 
-        return $productList;
+
+        return $sortedProducts;
+    }
+
+    private function sortingProducts(string $sortType, $productList): array
+    {
+        $collection = new SortCollection();
+
+        echo 'логика выбора сортировки';
+        $sortedProducts = $collection->sort(new PriceSort(), $productList);
+
+        return $sortedProducts;
     }
 
     /**

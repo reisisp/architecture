@@ -10,6 +10,9 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 
+/*Здесь шаблонный метод для создания контроллеров*/
+/*Как я понял по описанию - это BaseController является frontControllerом. Так как он подходит под описание контроллера обрабатывающего все запросы к сайту + его можно изменить при  помощи декоратора +  для выполнения запроса  вызывает конкретную функцию определенного класса*/
+/*Хотя, есл присмотреться - то на PageController Больше похоже. В таком случае frontoм будет наверное mainController, но точно сказать не могу, т.к. там фнкционала 0*/
 abstract class BaseController
 {
     /**
